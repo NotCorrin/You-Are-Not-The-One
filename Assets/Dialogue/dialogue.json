@@ -1,0 +1,49 @@
+{
+    "TEMP" : "DELETE - This is what one character looks like",
+    "CharacterName" : "SomeName",
+    "Category1" : [
+        {
+            "Option1" : "This is the associated dialogue text with option 1 in Category 1",
+            "Option2" : "This is the associated dialogue text with option 2 in Category 1",
+            "Option3" : "This is the associated dialogue text with option 3 in Category 1",
+            "Option4" : "This is the associated dialogue text with option 4 in Category 1",
+            "Option5" : "This is the associated dialogue text with option 5 in Category 1"
+        }
+    ],
+    "Category2" : [
+        {
+            "Option1" : "This is the associated dialogue text with option 1 in Category 2",
+            "Option2" : "This is the associated dialogue text with option 2 in Category 2",
+            "Option3" : "This is the associated dialogue text with option 3 in Category 2",
+            "Option4" : "This is the associated dialogue text with option 4 in Category 2",
+            "Option5" : "This is the associated dialogue text with option 5 in Category 2"
+        }
+    ],
+    "Category3" : [
+        {
+            "Option1" : "This is the associated dialogue text with option 1 in Category 3",
+            "Option2" : "This is the associated dialogue text with option 2 in Category 3",
+            "Option3" : "This is the associated dialogue text with option 3 in Category 3",
+            "Option4" : "This is the associated dialogue text with option 4 in Category 3",
+            "Option5" : "This is the associated dialogue text with option 5 in Category 3"
+        }
+    ],
+    "Category4" : [
+        {
+            "Option1" : "This is the associated dialogue text with option 1 in Category 4",
+            "Option2" : "This is the associated dialogue text with option 2 in Category 4",
+            "Option3" : "This is the associated dialogue text with option 3 in Category 4",
+            "Option4" : "This is the associated dialogue text with option 4 in Category 4",
+            "Option5" : "This is the associated dialogue text with option 5 in Category 4"
+        }
+    ],
+    "Category5" : [
+        {
+            "Option1" : "This is the associated dialogue text with option 1 in Category 5",
+            "Option2" : "This is the associated dialogue text with option 2 in Category 5",
+            "Option3" : "This is the associated dialogue text with option 3 in Category 5",
+            "Option4" : "This is the associated dialogue text with option 4 in Category 5",
+            "Option5" : "This is the associated dialogue text with option 5 in Category 5"
+        }
+    ]
+}
