@@ -18,12 +18,17 @@ public class ButtonManager : MonoBehaviour {
     
     public GameObject buttonPrefab;
     public Transform buttonParent;
-    public List<Text> buttons = new List<Text>();
+    public RectTransform[] btnTransform; 
+    private Text[] btnText = new Text[5];
+    private InputManager inputManager;
     public ButtonState state;
     
     private void Start()
     {
+        inputManager = GetComponent<InputManager>();
         CreateBtn();
+        UpdateBtnPosition(0);
+        UpdateBtnPosition(3);
     }
     public void UpdateScreen(List<string>NewButtons)
     {
@@ -31,9 +36,34 @@ public class ButtonManager : MonoBehaviour {
     }
     private void CreateBtn()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < btnText.Length; i++)
         {
-            Instantiate(buttonPrefab, new Vector3(-100 + (i * 50), -400), Quaternion.identity, buttonParent);            
+            //btnTransform[i]= (RectTransform)Instantiate(buttonPrefab, buttonParent).transform;
+            //btnTransform[i].GetComponent<Button>().onClick.AddListener(delegate { GetInput(i); });
+            btnText = buttonParent.GetComponentsInChildren<Text>();
+        }
+    }
+    public void GetInput(int i)
+    {
+        if (state == ButtonState.Category)
+        {
+            state = ButtonState.Options;
+            //send to globalmanager
+        }
+        else
+        {
+            //Gamemanager.Ask(buttonInput);
+        }
+        Debug.Log("clicked on " + i);
+    }
+    private void UpdateBtnPosition(int size)
+    {
+        int _btnCount = buttonParent.childCount;
+        if (size == _btnCount) return;
+        for (int i = 0; i < _btnCount; i++)
+        {
+            btnTransform[i].gameObject.SetActive(i < size);
+            btnTransform[i].anchoredPosition = new Vector3((_btnCount * -50) + ((i+1) * 100), 0);
         }
     }
     public void PlayerInput(int buttonInput) {
