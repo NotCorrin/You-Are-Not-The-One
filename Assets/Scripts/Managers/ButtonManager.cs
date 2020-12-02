@@ -16,9 +16,10 @@ public enum ButtonState {
 
 public class ButtonManager : MonoBehaviour {
     
-    public GameObject buttonPrefab;
+    //public GameObject buttonPrefab;
     public Transform buttonParent;
-    public RectTransform[] btnTransform; 
+    public RectTransform[] btnTransform;
+    private int buttonCount;
     private Text[] btnText = new Text[5];
     private InputManager inputManager;
     public ButtonState state;
@@ -30,9 +31,12 @@ public class ButtonManager : MonoBehaviour {
         UpdateBtnPosition(0);
         UpdateBtnPosition(3);
     }
-    public void UpdateScreen(List<string>NewButtons)
+    public void UpdateScreen(List<string> NewButtons)
     {
-        //if(buttons.Count == ) {}
+        //update button position
+        UpdateBtnPosition(NewButtons.Count);
+        //update button text
+
     }
     private void CreateBtn()
     {
@@ -45,10 +49,11 @@ public class ButtonManager : MonoBehaviour {
     }
     public void GetInput(int i)
     {
+        if(i<4) UpdateBtnPosition(i+2); //temp
         if (state == ButtonState.Category)
         {
             state = ButtonState.Options;
-            //send to globalmanager
+            UpdateScreen(inputManager.getBtn(i));
         }
         else
         {
@@ -58,23 +63,12 @@ public class ButtonManager : MonoBehaviour {
     }
     private void UpdateBtnPosition(int size)
     {
-        int _btnCount = buttonParent.childCount;
-        if (size == _btnCount) return;
-        for (int i = 0; i < _btnCount; i++)
+        if (buttonCount == size) return;
+        buttonCount = size;
+        for (int i = 0; i < 5; i++)
         {
             btnTransform[i].gameObject.SetActive(i < size);
-            btnTransform[i].anchoredPosition = new Vector3((_btnCount * -50) + ((i+1) * 100), 0);
-        }
-    }
-    public void PlayerInput(int buttonInput) {
-        if(state == ButtonState.Category)
-        {
-            state = ButtonState.Options;
-            //send to globalmanager
-        }
-        else
-        {
-            //Gamemanager.Ask(buttonInput);
+            btnTransform[i].anchoredPosition = new Vector3(((size+1) * -50) + ((i+1) * 100), 0);
         }
     }
 }

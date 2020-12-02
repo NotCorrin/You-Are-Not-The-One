@@ -20,5 +20,11 @@ public class InputManager : TheManager
         
     }
 
+    // idfk
+    public List<string> getBtn(int curCat)
+    {
+        List<string> catagories = new List<string>();
 
+        return catagories;
+    }
 }
