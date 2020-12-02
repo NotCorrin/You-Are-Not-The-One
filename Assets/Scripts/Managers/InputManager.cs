@@ -24,7 +24,10 @@ public class InputManager : TheManager
     public List<string> getBtn(int curCat)
     {
         List<string> catagories = new List<string>();
-
+        catagories.Add("HASHIRE SORI YO");
+        catagories.Add("KAZE NO YOU NI");
+        catagories.Add("TSUKIMIHARA WO");
+        catagories.Add("PADORU PADORU");
         return catagories;
     }
 }

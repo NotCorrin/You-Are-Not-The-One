@@ -28,15 +28,25 @@ public class ButtonManager : MonoBehaviour {
     {
         inputManager = GetComponent<InputManager>();
         CreateBtn();
-        UpdateBtnPosition(0);
-        UpdateBtnPosition(3);
+        inputManager.getBtn(0);
     }
     public void UpdateScreen(List<string> NewButtons)
     {
-        //update button position
-        UpdateBtnPosition(NewButtons.Count);
-        //update button text
+        if (buttonCount == NewButtons.Count) return;
+        buttonCount = NewButtons.Count;
+        for (int i = 0; i < 5; i++)
+        {
+            //update button position
+            btnTransform[i].gameObject.SetActive(i < buttonCount);
 
+            //update button text
+            if (i < buttonCount)
+            {
+                //btnTransform[i].anchoredPosition = new Vector3(((buttonCount + 1) * -50) + ((i + 1) * 100), 0);
+                btnTransform[i].anchoredPosition = new Vector3(0, i * -50 -25);
+                btnText[i].text = NewButtons[i];
+            }
+        }
     }
     private void CreateBtn()
     {
@@ -49,7 +59,6 @@ public class ButtonManager : MonoBehaviour {
     }
     public void GetInput(int i)
     {
-        if(i<4) UpdateBtnPosition(i+2); //temp
         if (state == ButtonState.Category)
         {
             state = ButtonState.Options;
@@ -60,15 +69,5 @@ public class ButtonManager : MonoBehaviour {
             //Gamemanager.Ask(buttonInput);
         }
         Debug.Log("clicked on " + i);
-    }
-    private void UpdateBtnPosition(int size)
-    {
-        if (buttonCount == size) return;
-        buttonCount = size;
-        for (int i = 0; i < 5; i++)
-        {
-            btnTransform[i].gameObject.SetActive(i < size);
-            btnTransform[i].anchoredPosition = new Vector3(((size+1) * -50) + ((i+1) * 100), 0);
-        }
     }
 }
